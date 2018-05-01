@@ -1,0 +1,7 @@
+config/
+
+*.pyc
+*.rdb
+
+.DS_Store
+.vscode/
