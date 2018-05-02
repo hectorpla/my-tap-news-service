@@ -1,10 +1,11 @@
-jsonrpclib-pelix
-pymongo
-pika
-requests
-redis
-lxml
-sklearn
-python-dateutil
-newspaper3k
-dateutil
+jsonrpclib-pelix=0.3.1
+pymongo=3.6.1
+redis=2.10.6
+
+# pika
+# requests
+# lxml
+# sklearn
+# python-dateutil
+# newspaper3k
+# dateutil
