@@ -1,12 +1,14 @@
 [[source]]
-
-name = 'my-tap-news-server'
+url = 'https://pypi.python.org/simple'
+verify_ssl = true
+name = 'pypi'
 
 [requires]
 python_version = '3.6'
 
 [packages]
-
-jsonrpclib-pelix = '0.3.1'
-pymongo = '3.6.1'
-redis = '2.10.6'
+jsonrpclib-pelix = '*'
+pymongo = '*'
+dnspython = '*'
+pika = '*'
+redis = '*'
