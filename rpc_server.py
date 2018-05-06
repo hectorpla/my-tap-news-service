@@ -1,10 +1,12 @@
+import os
+
 from jsonrpclib.SimpleJSONRPCServer import SimpleJSONRPCServer
 import rpc_operations
 
 HOST_NAME = 'localhost'
-PORT = 4040
+PORT = os.environ.get('PORT') or 4040
 
-server = SimpleJSONRPCServer((HOST_NAME, PORT))
+server = SimpleJSONRPCServer((HOST_NAME, int(PORT)))
 server.register_function(lambda x,y: x+y, 'add')
 server.register_function(lambda x: x, 'ping')
 
