@@ -3,8 +3,8 @@ import os
 from jsonrpclib.SimpleJSONRPCServer import SimpleJSONRPCServer
 import rpc_operations
 
-HOST_NAME = 'localhost'
-PORT = os.environ.get('PORT') or 4040
+HOST_NAME = '0.0.0.0' # localhost
+PORT = os.environ.get('PORT', 4040)
 
 server = SimpleJSONRPCServer((HOST_NAME, int(PORT)))
 server.register_function(lambda x,y: x+y, 'add')
