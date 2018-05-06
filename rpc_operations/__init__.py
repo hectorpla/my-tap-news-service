@@ -29,8 +29,8 @@ NEWS_COLLECTION_NAME = config['new_collection']
 PREF_DB_NAME = config['preference_db']
 PREF_COLLECTION_NAME = config['preference_collection']
 
-REDIS_HOST = config['redis_host']
-REDIS_PORT = config['redis_port']
+REDIS_HOST = config.get('redis_host')
+REDIS_PORT = config.get('redis_port')
 
 USER_CLICK_QUEUE_URL = config['new_click_queue_url']
 USER_CLICK_QUEUE_NAME = config['new_click_queue_name']
@@ -40,7 +40,11 @@ USER_CLICK_QUEUE_NAME = config['new_click_queue_name']
 news_collection = mongodb_client.get_db(NEWS_DB_NAME).get_collection(NEWS_COLLECTION_NAME)
 pref_collection = mongodb_client.get_db(PREF_DB_NAME).get_collection(PREF_COLLECTION_NAME)
 
-redis_client = redis.StrictRedis(REDIS_HOST, REDIS_PORT)
+if REDIS_HOST:
+    REDIS_URL = REDIS_HOST + ":" + (REDIS_PORT if REDIS_PORT else '')
+else:
+    REDIS_URL = os.environ.get("REDIS_URL") # heroku specific
+redis_client = redis.from_url(REDIS_URL)
 
 click_queue_client = AMQPClient(USER_CLICK_QUEUE_URL, USER_CLICK_QUEUE_NAME)
 
